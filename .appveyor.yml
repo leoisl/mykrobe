@@ -3,7 +3,7 @@ image:
 
 environment:
     CYG_MIRROR: http://cygwin.mirror.constant.com
-    CYG_PACKAGES: make,unzip,automake,automake1.16,autoconf,autoconf2.5,zip,libbz2-devel,bzip2,xz,zlib,zlib-devel,python3-devel,libtool,wget,liblzma-devel,libcurl-devel,R,libncurses-devel,python3-pip
+    CYG_PACKAGES: make,unzip,automake,automake1.16,autoconf,autoconf2.5,zip,libbz2-devel,bzip2,xz,zlib,zlib-devel,libtool,wget,liblzma-devel,libcurl-devel,R,libncurses-devel,python36-devel,python36-pip
     CYG_ROOT: C:\cygwin64
     CYG_CACHE: C:\cygwin64\var\cache\setup
     CYG_SETUP: setup-x86_64.exe
@@ -22,16 +22,12 @@ init:
 install:
   - ps: if (Test-Path Env:\CYG_ROOT) { Start-FileDownload "https://cygwin.com/$env:CYG_SETUP" -FileName "$env:CYG_SETUP" }
   - '%CYG_SETUP% --quiet-mode --no-shortcuts --only-site --root "%CYG_ROOT%" --site "%CYG_MIRROR%" --local-package-dir "%CYG_CACHE%" --packages "%CYG_PACKAGES%" --upgrade-also'
-  - '%BASH% -lc "which pip"'
-  - '%BASH% -lc "which pip3"'
-  - '%BASH% -lc "which python"'
-  - '%BASH% -lc "which python3"'
-  - '%BASH% -lc "pip install ."'
+  - '%BASH% -lc "pip3.6 install ."'
 
 
 build_script:
   - set HOME=.
-  - '%BASH% -lc "tox -e python3"'
+  - '%BASH% -lc "tox -e python3.6"'
   - '%BASH% -lc "git clone --recursive -b geno_kmer_count https://github.com/phelimb/mccortex"'
   - '%BASH% -lc "cd mccortex/libs/htslib && git checkout bcf9bff178f81c9c1cf3a052aeb6cbe32fe5fdcc"'
   - '%BASH% -lc "cd mccortex/libs/bcftools && git checkout b406a3906b153faa8bec0a53df07b2adf18a3052"'
