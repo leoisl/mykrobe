@@ -41,5 +41,6 @@ services:
   - mongodb
 
 test_script:
-  - '%BASH% -lc "mongod.exe -version"'
-  - '%BASH% -lc "mongod.exe"'
+  - '%BASH% -lc "C:\mongodb\mongod.exe'
+  - '%BASH% -lc "C:\mongodb\mongo.exe'
+
