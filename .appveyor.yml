@@ -41,5 +41,6 @@ services:
   - mongodb
 
 test_script:
-  - '%BASH% -lc "ls C:/mongodb/'
+  - '%BASH% -lc "C:/mongodb/bin/mongod.exe'
+  - '%BASH% -lc "C:/mongodb/bin/mongo.exe'
 
