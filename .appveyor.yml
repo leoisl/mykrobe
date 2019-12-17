@@ -36,6 +36,6 @@ init:
 #   - '%BASH%  -lc "python3 ./ci/windows_xxhsum_fix.py"'
 #   - '%BASH%  -lc "cd mccortex && make all && make tests"'
 
-test:
+tests:
   - '%BASH% -lc "mongod.exe -version"'
   - '%BASH% -lc "mongod.exe"'
