@@ -19,15 +19,15 @@ clone_depth: 1
 init:
   - git config --global core.autocrlf true
 
-# install:
-#   - ps: if (Test-Path Env:\CYG_ROOT) { Start-FileDownload "https://cygwin.com/$env:CYG_SETUP" -FileName "$env:CYG_SETUP" }
-#   - '%CYG_SETUP% --quiet-mode --no-shortcuts --only-site --root "%CYG_ROOT%" --site "%CYG_MIRROR%" --local-package-dir "%CYG_CACHE%" --packages "%CYG_PACKAGES%" --upgrade-also'
+install:
+  - ps: if (Test-Path Env:\CYG_ROOT) { Start-FileDownload "https://cygwin.com/$env:CYG_SETUP" -FileName "$env:CYG_SETUP" }
+  - '%CYG_SETUP% --quiet-mode --no-shortcuts --only-site --root "%CYG_ROOT%" --site "%CYG_MIRROR%" --local-package-dir "%CYG_CACHE%" --packages "%CYG_PACKAGES%" --upgrade-also'
 #   - set HOME=.
 #   - '%BASH% -lc "pip3.6 install ."'
 
 
-# build_script:
-#   - set HOME=.
+build_script:
+  - set HOME=.
 #   - '%BASH% -lc "tox -e python3.6"'
 #   - '%BASH% -lc "git clone --recursive -b geno_kmer_count https://github.com/phelimb/mccortex"'
 #   - '%BASH% -lc "cd mccortex/libs/htslib && git checkout bcf9bff178f81c9c1cf3a052aeb6cbe32fe5fdcc"'
